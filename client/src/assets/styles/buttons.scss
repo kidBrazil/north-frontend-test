@@ -18,6 +18,8 @@
   letter-spacing: .2px;
   transition: all .4s;
   position: relative;
+  font-size: 22px;
+  border-radius: 10px;
   vertical-align: middle;
   appareance: none;
   border: 2px solid transparent;
@@ -41,9 +43,6 @@
 .blk-primary-btn {
   background: $color-brand-primary;
   color: $bkg-dark-grey;
-  font-size: 22px;
-  border-radius: 10px;
-
   &:hover,
   &:focus,
   &:active {
@@ -53,11 +52,11 @@
   }
 }
 
+// Delete Btn
 .blk-delete-btn {
   background: $color-brand-delete;
   color: $bkg-dark-grey;
-  font-size: 22px;
-  border-radius: 10px;
+
 
   &:hover,
   &:focus,
@@ -65,5 +64,19 @@
     color: $color-brand-delete;
     background: transparent;
     border: 2px solid $color-brand-delete;
+  }
+}
+
+// Submit BTN
+.blk-submit-btn {
+  background: $color-brand-submit;
+  color: $bkg-dark-grey;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color-brand-submit;
+    background: transparent;
+    border: 2px solid $color-brand-submit;
   }
 }

@@ -67,3 +67,9 @@
     background: linear-gradient(90deg, rgba(226,124,19,1) 0%, rgba(226,124,19,0) 100%);
   }
 }
+
+.blk-panel {
+  padding: 20px;
+  border: 2px solid $color-brand-primary;
+  border-radius: 10px;
+}

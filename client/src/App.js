@@ -7,7 +7,8 @@ import './assets/styles/global-main.scss';
 
 class App extends Component {
   state = {
-    createView: false,
+    // Swap flag to view Create View
+    createView: true,
     // Temporary data model..
     events: [
       {
@@ -69,6 +70,7 @@ class App extends Component {
           <div className="blk-panel-heading u-uppercase u-bold h6">
             Events List
           </div>
+          {/* Quickly checks lenght of event to determine what to show */}
           {this.state.events.length > 0 ? (
             <EventList events={this.state.events}/>
           ):(
@@ -76,12 +78,13 @@ class App extends Component {
               There are currently no events to view...
             </div>
           )}
+          {/* Button for Creating New Event */}
           <button className="blk-base-btn blk-primary-btn">
             Create New
           </button>
         </div>
         <div className="blk-events-content">
-          {/* Conditional view switch between create and view event */}
+          {/* Conditional view switch between create and view event fired by button */}
           {!createPanel &&
             <EventDetail details={this.state.eventDetail}/>
           }

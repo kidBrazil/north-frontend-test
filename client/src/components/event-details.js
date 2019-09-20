@@ -9,7 +9,7 @@ class EventDetail extends Component {
           Event Details
         </div>
         <div className="blk-event-details">
-          <div className="blk-event-header flex flex-vert-center flex-hor-between flex-wrap">
+          <div className="blk-event-header blk-panel flex flex-vert-center flex-hor-between flex-wrap">
             <i className={this.props.details.icon}></i>
             <div className="blk-event-content">
               <span className="blk-event-row">
@@ -30,7 +30,7 @@ class EventDetail extends Component {
               </span>
             </div>
           </div>
-          <div className="blk-event-data">
+          <div className="blk-event-data blk-panel">
           <span className="blk-event-row">
             <span className="blk-details-header">Event Data:</span>
               {this.props.details.data}
