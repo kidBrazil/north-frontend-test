@@ -2,38 +2,52 @@
  *	SCAFFOLDING & LAYOUT UTILITIES
 /-------------------------------------*/
 
-// Wrapper Classes
-
-.mdev-main-wrapper {
-  width: 95%;
-  margin: 0 auto;
+// App Structure
+.blk-main-app {
+  width: 100%;
   position: relative;
-  padding: 0;
-  min-width: 290px;
+}
 
-  @media #{$tablet-prt-only} {
-    max-width: 800px;
-    width: 76%;
+// Sidebar
+.blk-events-sidebar {
+  width: 100%;
+  background: $bkg-dark-grey;
+  box-shadow: 0px 10px 30px inset rgba(0, 0, 0, .3);
+
+  @media #{$landscape} {
+    width: 30%;
+    height: 100vh;
   }
+}
 
-  @media #{$tablet-lnd-only} {
-    max-width: 900px;
-    width: 76%;
+// Main Content
+.blk-events-content {
+  width: 100%;
+  background: $bkg-medium-grey;
+
+  @media #{$landscape} {
+    width: 70%;
   }
+}
 
-  @media #{$laptop-only} {
-    max-width: 1000px;
-  }
+// Panel Headers
+.blk-panel-heading {
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  // Truncate lines if needed:
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-  @media #{$desktop-only} {
-    max-width: 1300px;
-  }
-
-  @media #{$xl-up} {
-    max-width: 1500px;
-  }
-
-  @media #{$phone-only} {
-    width: 90%;
+  // Pseudo Element for gradient underline
+  &:after {
+    @include pseudo(relative);
+    bottom: 0;
+    background: pink;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(226,124,19,1) 0%, rgba(226,124,19,0) 100%);
   }
 }

@@ -4,7 +4,9 @@ class EventCreate extends Component {
   render () {
     return (
       <div>
-        <h1> Event Create </h1>
+        <div className="blk-panel-heading u-uppercase u-bold h6">
+          Create New Event
+        </div>
       </div>
     );
   }

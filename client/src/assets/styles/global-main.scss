@@ -101,6 +101,14 @@ $fa-font-path: '~@fortawesome/fontawesome-pro/webfonts';
 // [Solid] ----------
 @import '~@fortawesome/fontawesome-pro/scss/solid.scss';
 
+// [Solid] ----------
+@import '~@fortawesome/fontawesome-pro/scss/duotone.scss';
+
+/*-----
+  Application components
+-----*/
+@import './components/event-list.scss';
+
 /*----
   Print
 -----*/
