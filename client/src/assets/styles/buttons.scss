@@ -8,34 +8,19 @@
 /-------------------------------------*/
 
 /* Base Button */
-// TODO - Replace MDEV-BTN
-.mdev-btn {
+.blk-base-btn {
   width: auto;
   padding: 10px;
   display: inline-block;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
+  letter-spacing: .2px;
   transition: all .4s;
   position: relative;
   vertical-align: middle;
-
-  &:before,
-  &:after {
-    @include pseudo();
-    width: 100%;
-    height: 100%;
-  }
-
-  &:before {
-    top: 0;
-    left: 0;
-  }
-
-  &:after {
-    bottom: 0;
-    right: 0;
-  }
+  appareance: none;
+  border: 2px solid transparent;
 
   @media #{$portrait} {
     padding: 15px 20px;
@@ -48,5 +33,21 @@
   @media #{$phone-only} {
     padding: 8px 10px;
     letter-spacing: 1px;
+  }
+}
+
+// Primary Button
+.blk-primary-btn {
+  background: $color-brand-primary;
+  color: $bkg-dark-grey;
+  font-size: 22px;
+  border-radius: 2px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color-brand-primary;
+    background: transparent;
+    border: 2px solid $color-brand-primary;
   }
 }

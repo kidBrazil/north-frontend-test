@@ -51,13 +51,25 @@ class App extends Component {
 
   render () {
     // Bind state to variables
-    const createPanel = this.state.createView;
+    let createPanel = this.state.createView;
     // Return View
     return (
       <div className="flex flex-vert-stretch flex-wrap">
         {/* Application Sidebar */}
         <div className="blk-events-sidebar">
-          <EventList payload={this.state.events}/>
+          <div className="blk-panel-heading u-uppercase u-bold h6">
+            Events List
+          </div>
+          {this.state.events.length > 0 ? (
+            <EventList payload={this.state.events}/>
+          ):(
+            <div className="blk-no-events">
+              There are currently no events to view...
+            </div>
+          )}
+          <button className="blk-base-btn blk-primary-btn">
+            Create New
+          </button>
         </div>
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event */}
