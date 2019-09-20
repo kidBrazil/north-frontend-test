@@ -1,27 +1,35 @@
-import React from 'react';
-import logo from './assets/images/logo.svg';
+import React, {Component} from 'react';
+import EventList from './components/event-list'
+import EventDetail from './components/event-details'
+import EventCreate from './components/event-create'
+// Import Global SCSS Stylesheer
 import './assets/styles/global-main.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          <i className="fab fa-facebook"></i>
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    createView: false
+  }
+
+  render () {
+    const createPanel = this.state.createView
+    return (
+      <div className="flex flex-vert-stretch">
+        {/* Application Sidebar */}
+        <div className="blk-events-sidebar">
+          <EventList />
+        </div>
+        <div className="blk-events-detail">
+          {/* Conditional view switch between create and view event */}
+          {!createPanel &&
+            <EventDetail />
+          }
+          {createPanel &&
+            <EventCreate />
+          }
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
