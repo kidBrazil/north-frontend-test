@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/images/logo.svg';
+import './assets/styles/global-main.scss';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          <i className="fab fa-facebook"></i>
         </a>
       </header>
     </div>
