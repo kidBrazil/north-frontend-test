@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 class EventDetail extends Component {
   render () {
     // Check that the object has something in it.
-    if ( Object.keys(this.props.details).length > 0 && this.props.details.constructor === Object ) {
+    if ( this.props.details ) {
       return (
         <div>
           <div className="blk-panel-heading u-uppercase u-bold h6">

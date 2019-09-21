@@ -17,22 +17,22 @@ class App extends Component {
   // [Mount Livecycle Hook ] -----------------------
   componentDidMount() {
     // Load events on Mount
-    this.getEvent()
+    this.getEvents()
   }
 
   // [GET EVENTS] ---------------------------------
   // When the component mounts, fetch the data and load the first events
-  getEvent = () => {
+  getEvents = () => {
     Axios.get('https://forgetful-elephant.herokuapp.com/events').then(res => {
       // Pull Data and assign it to variables
       // Automatically load the first one.
       this.setState({
         events: res.data,
-        eventDetail: res.data[0]
+        eventDetail: res.data[0],
+        createView: false
       })
     })
   }
-
   // [SELECT EVENT] -------------------------------
   // When user selects an item from the list, load it into the view
   selectEvent = (desiredIndex) => {
@@ -46,10 +46,9 @@ class App extends Component {
     Axios.delete('https://forgetful-elephant.herokuapp.com/events/' + eventId)
     .then(res => {
       // Reload events after delete
-      this.getEvent()
+      this.getEvents()
     })
   }
-
   // [TOGGLE FORM] --------------------------------
   // Simple flag toggle for form UI
   toggleForm = (e) => {
@@ -86,7 +85,7 @@ class App extends Component {
             <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent}/>
           }
           {this.state.createView &&
-            <EventCreate toggleForm={this.toggleForm}/>
+            <EventCreate toggleForm={this.toggleForm} loadEvents={this.getEvents}/>
           }
         </div>
       </div>
