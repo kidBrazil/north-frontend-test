@@ -39,4 +39,3 @@ Based on that interpretation I assumed that the UI would serve as the central co
 - Add Favicon generator
 - Add Image compression Pipeline
 - Dockerize React App
-- Error Handling

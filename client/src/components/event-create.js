@@ -14,8 +14,9 @@ import Axios from 'axios';
 //
 // Instead, when the user selects a type from the dropdown it will add the associated
 // icon automatically as well as the service code.
-
 class EventCreate extends Component {
+  // Container state for form values
+  // Should probably be using something like Redux but I would need more time..
   state = {
     formData: {
       type: '',
@@ -26,9 +27,8 @@ class EventCreate extends Component {
       data: ''
     }
   }
-
   // [Handle Change] ------------------------------------------------------
-  // Dynamically handle key changes
+  // Dynamically handle key changes.
   handleChange(e,key) {
     // If Select Field changes...
     if (e.target.options) {
@@ -56,14 +56,16 @@ class EventCreate extends Component {
   }
   // [SUBMIT FORM] ----------------------------------------------------
   submitForm = () => {
+    // Grab a timestamp for the event.
     let created = new Date().toString()
-    // Capture create time
+    // Assignt it to the state and call the validation function.
     this.setState({
       formData: {
         ...this.state.formData,
          timestamp: created
       }
-    }, this.validateForm)
+    // Validate form and call request
+    }, ((this.validateForm()) ? this.sendRequest : null))
   }
   //[VALIDATE FORM] --------------------------------------------------
   // This is an extremely barebones validation. It merely checks to see if there is something there.
@@ -86,7 +88,7 @@ class EventCreate extends Component {
     }
     // No error.. go ahead and submit
     else {
-      this.sendRequest()
+      return true
     }
   }
   // [AXIOS REQUEST] ---------------------------------------------------
@@ -94,8 +96,9 @@ class EventCreate extends Component {
     //Submit data to API
     Axios.post('https://forgetful-elephant.herokuapp.com/events', this.state.formData)
     .then(res => {
-      // Load currently created event
+      // Suceess..
       window.alertify.success('Your event was successfully created!')
+      // Load created event into details view
       this.props.loadEvents(true)
     })
     .catch(err => {

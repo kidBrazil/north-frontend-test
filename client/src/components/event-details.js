@@ -53,7 +53,7 @@ class EventDetail extends Component {
         </div>
       );
     }
-
+    // If the object is empty show waiting screen
     else {
       return (
         <div className="blk-no-content blk-panel">
