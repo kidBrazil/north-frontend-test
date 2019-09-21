@@ -14,8 +14,11 @@
   background: $bkg-dark-grey;
   position: relative;
   box-shadow: 0px 10px 30px inset rgba(0, 0, 0, .3);
-  display: flex;
-  flex-wrap: wrap;
+
+  @media #{$portrait} {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   @media #{$landscape} {
     width: 30%;
@@ -43,6 +46,13 @@
       bottom: 0;
       border-radius: 10px 10px 0 0;
     }
+  }
+
+  // Add BKG to make it easier on the eyes..
+  .blk-panel-heading {
+    background: $bkg-dark-grey;
+    position: relative;
+    z-index: 10;
   }
 }
 
