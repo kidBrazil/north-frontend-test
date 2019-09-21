@@ -22,13 +22,14 @@ class App extends Component {
 
   // [GET EVENTS] ---------------------------------
   // When the component mounts, fetch the data and load the first events
-  getEvents = () => {
+  getEvents = (loadLatest) => {
     Axios.get('https://forgetful-elephant.herokuapp.com/events').then(res => {
       // Pull Data and assign it to variables
       // Automatically load the first one.
       this.setState({
         events: res.data,
-        eventDetail: res.data[0],
+        // Inline if-else decides if it loads first or last
+        eventDetail: loadLatest ? res.data[res.data.length - 1] : res.data[0],
         createView: false
       })
     })
@@ -37,7 +38,8 @@ class App extends Component {
   // When user selects an item from the list, load it into the view
   selectEvent = (desiredIndex) => {
     this.setState({
-      eventDetail: this.state.events[desiredIndex]
+      eventDetail: this.state.events[desiredIndex],
+      createView: false
     })
   }
   // [DELETE EVENT] -------------------------------

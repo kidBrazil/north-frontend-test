@@ -62,15 +62,16 @@ class EventCreate extends Component {
       formData: {
         ...this.state.formData,
          timestamp: created
-      },
-    }, this.sendRequest());
+      }
+    }, this.sendRequest)
   }
   // Send Request after submission passes
   sendRequest = () => {
     //Submit data to API
     Axios.post('https://forgetful-elephant.herokuapp.com/events', this.state.formData)
     .then(res => {
-      this.props.loadEvents()
+      // Load currently created event
+      this.props.loadEvents(true)
     })
   }
 
@@ -87,6 +88,7 @@ class EventCreate extends Component {
               <select
                 onChange={(e)=>this.handleChange(e, 'icon')}
                 aria-label="Select Service Type">
+                <option value="" disabled selected>Select Service Type</option>
                 <option serviceid="XHR0001" value="fad fa-user-headset">Phone Support</option>
                 <option serviceid="XHR0002" value="fas fa-tools">Machine Maintenance</option>
                 <option serviceid="XHR0003" value="fas fa-car-building">Building Maintenance</option>
