@@ -34,11 +34,9 @@ Based on that interpretation I assumed that the UI would serve as the central co
 
 
 ## [ TODO's ]
-- Form Validations
-- Sanitize Forms
 - Locallization
 - Refactor SCSS to consolidate styles
 - Add Favicon generator
 - Add Image compression Pipeline
 - Dockerize React App
-- Eror Handling
+- Error Handling

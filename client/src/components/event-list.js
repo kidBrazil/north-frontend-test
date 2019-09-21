@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // The event list component takes in an array of objects from the API and displays
 // them in a simple list. Each component will correspond to an ID and when clicked
 // should render the details of that entry into the main content area.
-
 class EventList extends Component {
   render () {
     return (
@@ -30,7 +29,6 @@ class EventList extends Component {
     );
   }
 }
-
 // PropTypes...
 EventList.propTypes = {
   events: PropTypes.array.isRequired

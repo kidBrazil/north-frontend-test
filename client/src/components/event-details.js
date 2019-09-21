@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 // [ EVENT DETAILS COMPONENT ] -------------------------------------
 // The event details component is responsible for displaying the data
 // returned from the API in full. It takes in a object as a prop that follows
 // the same schema as the DB.
-
 class EventDetail extends Component {
   render () {
     // Check that the object has something in it.

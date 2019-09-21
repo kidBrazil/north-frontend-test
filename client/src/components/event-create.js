@@ -27,7 +27,7 @@ class EventCreate extends Component {
     }
   }
 
-  // [Handle Change] ------------------
+  // [Handle Change] ------------------------------------------------------
   // Dynamically handle key changes
   handleChange(e,key) {
     // If Select Field changes...
@@ -65,16 +65,6 @@ class EventCreate extends Component {
       }
     }, this.validateForm)
   }
-  // [AXIOS REQUEST] ---------------------------------------------------
-  sendRequest = () => {
-    //Submit data to API
-    Axios.post('https://forgetful-elephant.herokuapp.com/events', this.state.formData)
-    .then(res => {
-      // Load currently created event
-      this.props.loadEvents(true)
-    })
-  }
-
   //[VALIDATE FORM] --------------------------------------------------
   // This is an extremely barebones validation. It merely checks to see if there is something there.
   // A full fledged form validation would go beyond just that and would do some regEx on these values
@@ -99,7 +89,21 @@ class EventCreate extends Component {
       this.sendRequest()
     }
   }
-
+  // [AXIOS REQUEST] ---------------------------------------------------
+  sendRequest = () => {
+    //Submit data to API
+    Axios.post('https://forgetful-elephant.herokuapp.com/events', this.state.formData)
+    .then(res => {
+      // Load currently created event
+      window.alertify.success('Your event was successfully created!')
+      this.props.loadEvents(true)
+    })
+    .catch(err => {
+      // handle error
+      window.alertify.error('We\'r sorry, something went wrong with that request.')
+      console.log(err)
+    })
+  }
   // [RENDER FUNCTION] --------------------------------------------------------
   render () {
     return (
@@ -112,9 +116,10 @@ class EventCreate extends Component {
             <div className="blk-event-row">
               <span className="blk-details-header">Service Type:</span>
               <select
+                defaultValue={'DEFAULT'}
                 onChange={(e)=>this.handleChange(e, 'icon')}
                 aria-label="Select Service Type">
-                <option value="" disabled selected>Select Service Type</option>
+                <option value="DEFAULT" disabled>Select Service Type</option>
                 <option serviceid="XHR0001" value="fad fa-user-headset">Phone Support</option>
                 <option serviceid="XHR0002" value="fas fa-tools">Machine Maintenance</option>
                 <option serviceid="XHR0003" value="fas fa-car-building">Building Maintenance</option>

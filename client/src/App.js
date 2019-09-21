@@ -4,15 +4,13 @@ import EventDetail from './components/event-details'
 import EventCreate from './components/event-create'
 import Axios from 'axios';
 // Import Global SCSS Stylesheer
-import './assets/styles/global-main.scss';
 
 class App extends Component {
   state = {
     // Swap flag to view Create View
     createView: false,
     events: [],
-    eventDetail: {},
-    firstEvent: null
+    eventDetail: {}
   }
   // [Mount Livecycle Hook ] -----------------------
   componentDidMount() {
@@ -23,7 +21,8 @@ class App extends Component {
   // [GET EVENTS] ---------------------------------
   // When the component mounts, fetch the data and load the first events
   getEvents = (loadLatest) => {
-    Axios.get('https://forgetful-elephant.herokuapp.com/events').then(res => {
+    Axios.get('https://forgetful-elephant.herokuapp.com/events')
+    .then(res => {
       // Pull Data and assign it to variables
       // Automatically load the first one.
       this.setState({
@@ -32,6 +31,11 @@ class App extends Component {
         eventDetail: loadLatest ? res.data[res.data.length - 1] : res.data[0],
         createView: false
       })
+    })
+    .catch(err => {
+      // handle error
+      window.alertify.error('We\'r sorry, something went wrong while loading the events.')
+      console.log(err)
     })
   }
   // [SELECT EVENT] -------------------------------
@@ -48,7 +52,13 @@ class App extends Component {
     Axios.delete('https://forgetful-elephant.herokuapp.com/events/' + eventId)
     .then(res => {
       // Reload events after delete
+      window.alertify.success('Event successfully deleted.')
       this.getEvents()
+    })
+    .catch(err => {
+      // handle error
+      window.alertify.error('We\'r sorry, something went wrong while deleting that event.')
+      console.log(err)
     })
   }
   // [TOGGLE FORM] --------------------------------
