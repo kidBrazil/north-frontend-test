@@ -71,9 +71,4 @@ class EventDetail extends Component {
   }
 }
 
-// PropTypes...
-EventDetail.propTypes = {
-  details: PropTypes.object.isRequired
-}
-
 export default EventDetail;

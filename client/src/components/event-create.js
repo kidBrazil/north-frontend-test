@@ -63,9 +63,9 @@ class EventCreate extends Component {
         ...this.state.formData,
          timestamp: created
       }
-    }, this.sendRequest)
+    }, this.validateForm)
   }
-  // Send Request after submission passes
+  // [AXIOS REQUEST] ---------------------------------------------------
   sendRequest = () => {
     //Submit data to API
     Axios.post('https://forgetful-elephant.herokuapp.com/events', this.state.formData)
@@ -75,6 +75,32 @@ class EventCreate extends Component {
     })
   }
 
+  //[VALIDATE FORM] --------------------------------------------------
+  // This is an extremely barebones validation. It merely checks to see if there is something there.
+  // A full fledged form validation would go beyond just that and would do some regEx on these values
+  // to make sure they conform to the expected data structures. I have other examples of regEx on my github.
+  validateForm = () => {
+    let formData = this.state.formData
+    let error = null
+    // Check that everything is filled
+    for (var key in formData) {
+      var data = formData[key]
+      if (!data) {
+        error = true
+      }
+    }
+    // If error.. handle it..
+    if (error) {
+      window.alertify.error('Please make sure you have filled the whole form.')
+      return false
+    }
+    // No error.. go ahead and submit
+    else {
+      this.sendRequest()
+    }
+  }
+
+  // [RENDER FUNCTION] --------------------------------------------------------
   render () {
     return (
       <div>
