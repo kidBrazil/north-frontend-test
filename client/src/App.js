@@ -10,32 +10,54 @@ class App extends Component {
   state = {
     // Swap flag to view Create View
     createView: false,
-    // Temporary data model..
     events: [],
-    eventDetail: {
-        id: 4,
-        type: 'Network Maintenance',
-        serviceId: 'XRZ004',
-        icon: 'fas fa-signal-slash',
-        timestamp: new Date().toString(),
-        title: 'Users on the 4th floor ca\'t get access to the WiFi hotspots.',
-        data: 'User complains that the new appliance is too difficult to setup. The last time he came close to the appliance it tried to bite him. Support technicial told him this was absolute nonesense but the user now refuses to go anywhere near it until the technician calls.'
-    }
+    eventDetail: {},
+    firstEvent: null
+  }
+  // [Mount Livecycle Hook ] -----------------------
+  componentDidMount() {
+    // Load events on Mount
+    this.getEvent()
   }
 
-  // Component Mount Get Data
-  componentDidMount() {
+  // [GET EVENTS] ---------------------------------
+  // When the component mounts, fetch the data and load the first events
+  getEvent = () => {
     Axios.get('https://forgetful-elephant.herokuapp.com/events').then(res => {
-      this.setState({events: res.data})
+      // Pull Data and assign it to variables
+      // Automatically load the first one.
+      this.setState({
+        events: res.data,
+        eventDetail: res.data[0]
+      })
     })
   }
 
-  // Show Form
+  // [SELECT EVENT] -------------------------------
+  // When user selects an item from the list, load it into the view
+  selectEvent = (desiredIndex) => {
+    this.setState({
+      eventDetail: this.state.events[desiredIndex]
+    })
+  }
+  // [DELETE EVENT] -------------------------------
+  // When user hits delete, delete that event!
+  deleteEvent = (eventId) => {
+    Axios.delete('https://forgetful-elephant.herokuapp.com/events/' + eventId)
+    .then(res => {
+      // Reload events after delete
+      this.getEvent()
+    })
+  }
+
+  // [TOGGLE FORM] --------------------------------
+  // Simple flag toggle for form UI
   toggleForm = (e) => {
     e.preventDefault();
     this.setState({createView: !this.state.createView})
   }
 
+  // [RENDER View] ----------------------------------
   render () {
     // Return View
     return (
@@ -47,7 +69,7 @@ class App extends Component {
           </div>
           {/* Quickly checks lenght of event to determine what to show */}
           {this.state.events.length > 0 ? (
-            <EventList events={this.state.events}/>
+            <EventList events={this.state.events} selectEvent={this.selectEvent}/>
           ):(
             <div className="blk-no-events">
               There are currently no events to view...
@@ -61,7 +83,7 @@ class App extends Component {
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event fired by button */}
           {!this.state.createView &&
-            <EventDetail details={this.state.eventDetail}/>
+            <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent}/>
           }
           {this.state.createView &&
             <EventCreate toggleForm={this.toggleForm}/>

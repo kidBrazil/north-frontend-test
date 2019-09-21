@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 
 class EventDetail extends Component {
   render () {
-    // Has something loaded..
-    if ( this.props.details ) {
+    // Check that the object has something in it.
+    if ( Object.keys(this.props.details).length > 0 && this.props.details.constructor === Object ) {
       return (
         <div>
           <div className="blk-panel-heading u-uppercase u-bold h6">
@@ -34,6 +34,10 @@ class EventDetail extends Component {
                   <span className="blk-details-header">Time Stamp:</span>
                   {this.props.details.timestamp}
                 </span>
+                <span className="blk-event-row">
+                  <span className="blk-details-header">Event Id:</span>
+                  {this.props.details.id}
+                </span>
               </div>
             </div>
             <div className="blk-event-data blk-panel">
@@ -42,7 +46,9 @@ class EventDetail extends Component {
                 {this.props.details.data}
               </span>
             </div>
-            <button className="blk-base-btn blk-delete-btn">
+            <button aria-label="Delete Event"
+              onClick={()=>this.props.deleteEvent(this.props.details.id)}
+              className="blk-base-btn blk-delete-btn">
               Delete Event
             </button>
           </div>

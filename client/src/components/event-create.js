@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+
 // [ CREATE EVENT ] -------------------------------------
 // The create event component is a simple form to interact with the forgetful-elephant.
 //

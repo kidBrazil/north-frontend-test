@@ -11,7 +11,9 @@ class EventList extends Component {
       <div className="blk-event-list">
         {this.props.events.map((event, index) => {
           return (
-            <div key={index} className="blk-event flex flex-hor-between flex-vert-center flex-hor-start">
+            <div key={index}
+              onClick={()=>this.props.selectEvent(index)}
+              className="blk-event flex flex-hor-between flex-vert-center flex-hor-start">
               <i className={event.icon}></i>
               <div className="blk-event-content">
                 <span className="blk-event-type">
