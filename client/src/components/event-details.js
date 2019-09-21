@@ -24,17 +24,19 @@ class EventDetail extends Component {
                   <span className="blk-details-header">Service Title:</span>
                   {this.props.details.title}
                 </span>
-                <span className="blk-event-row">
-                  <span className="blk-details-header">Service Code:</span>
-                  {this.props.details.serviceId}
-                </span>
+                <div className="flex flex-hor-between">
+                  <span className="blk-event-row">
+                    <span className="blk-details-header">Service Code:</span>
+                    {this.props.details.serviceId}
+                  </span>
+                  <span className="blk-event-row">
+                    <span className="blk-details-header">Event Id:</span>
+                    {this.props.details.id}
+                  </span>
+                </div>
                 <span className="blk-event-row">
                   <span className="blk-details-header">Time Stamp:</span>
                   {this.props.details.timestamp}
-                </span>
-                <span className="blk-event-row">
-                  <span className="blk-details-header">Event Id:</span>
-                  {this.props.details.id}
                 </span>
               </div>
             </div>

@@ -65,7 +65,13 @@ class App extends Component {
   // Simple flag toggle for form UI
   toggleForm = (e) => {
     e.preventDefault();
+    // Store the original view..
+    let scrollBottom = !this.state.createView
     this.setState({createView: !this.state.createView})
+    // Scroll to bottom if form is being show.
+    if (scrollBottom) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   }
 
   // [RENDER View] ----------------------------------

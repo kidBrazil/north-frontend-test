@@ -58,14 +58,13 @@ class EventCreate extends Component {
   submitForm = () => {
     // Grab a timestamp for the event.
     let created = new Date().toString()
-    // Assignt it to the state and call the validation function.
+    // Assignt it to the state and call
     this.setState({
       formData: {
         ...this.state.formData,
          timestamp: created
       }
-    // Validate form and call request
-    }, ((this.validateForm()) ? this.sendRequest : null))
+    }, this.validateForm)
   }
   //[VALIDATE FORM] --------------------------------------------------
   // This is an extremely barebones validation. It merely checks to see if there is something there.
@@ -77,6 +76,7 @@ class EventCreate extends Component {
     // Check that everything is filled
     for (var key in formData) {
       var data = formData[key]
+      // You might want some RegEx here in a real world application.
       if (!data) {
         error = true
       }
@@ -86,9 +86,9 @@ class EventCreate extends Component {
       window.alertify.error('Please make sure you have filled the whole form.')
       return false
     }
-    // No error.. go ahead and submit
+    // No error - Send Request
     else {
-      return true
+      this.sendRequest()
     }
   }
   // [AXIOS REQUEST] ---------------------------------------------------
@@ -96,9 +96,8 @@ class EventCreate extends Component {
     //Submit data to API
     Axios.post('https://forgetful-elephant.herokuapp.com/events', this.state.formData)
     .then(res => {
-      // Suceess..
+      // Load currently created event
       window.alertify.success('Your event was successfully created!')
-      // Load created event into details view
       this.props.loadEvents(true)
     })
     .catch(err => {
