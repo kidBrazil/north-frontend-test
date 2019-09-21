@@ -2,69 +2,73 @@ import React, {Component} from 'react';
 import EventList from './components/event-list'
 import EventDetail from './components/event-details'
 import EventCreate from './components/event-create'
+import Axios from 'axios';
 // Import Global SCSS Stylesheer
-import './assets/styles/global-main.scss';
 
 class App extends Component {
   state = {
     // Swap flag to view Create View
     createView: false,
-    // Temporary data model..
-    events: [
-      {
-        id: 1,
-        type: 'Phone Support',
-        serviceId: 'XRZ001',
-        icon: 'fad fa-user-headset',
-        timestamp: new Date().toString(),
-        title: 'User requires phone support to setup new home appliance.',
-        data: 'User complains that the new appliance is too difficult to setup. The last time he came close to the appliance it tried to bite him. Support technicial told him this was absolute nonesense but the user now refuses to go anywhere near it until the technician calls.'
-      },
-      {
-        id: 2,
-        type: 'Machine Maintenance',
-        serviceId: 'XRZ002',
-        icon: 'fas fa-tools',
-        timestamp: new Date().toString(),
-        title: 'Customer alledges a "curious squirrel" is stuck inside his computer.',
-        data: 'User complains that the new appliance is too difficult to setup. The last time he came close to the appliance it tried to bite him. Support technicial told him this was absolute nonesense but the user now refuses to go anywhere near it until the technician calls.'
-      },
-      {
-        id: 3,
-        type: 'Building Maintenance',
-        serviceId: 'XRZ003',
-        icon: 'fas fa-car-building',
-        timestamp: new Date().toString(),
-        title: 'Elevator on 3rd floor insist in taking users to random floors.',
-        data: 'User complains that the new appliance is too difficult to setup. The last time he came close to the appliance it tried to bite him. Support technicial told him this was absolute nonesense but the user now refuses to go anywhere near it until the technician calls.'
-      },
-      {
-        id: 4,
-        type: 'Network Maintenance',
-        serviceId: 'XRZ004',
-        icon: 'fas fa-signal-slash',
-        timestamp: new Date().toString(),
-        title: 'Users on the 4th floor ca\'t get access to the WiFi hotspots.',
-        data: 'User complains that the new appliance is too difficult to setup. The last time he came close to the appliance it tried to bite him. Support technicial told him this was absolute nonesense but the user now refuses to go anywhere near it until the technician calls.'
-      }
-    ],
-    eventDetail: {
-        id: 4,
-        type: 'Network Maintenance',
-        serviceId: 'XRZ004',
-        icon: 'fas fa-signal-slash',
-        timestamp: new Date().toString(),
-        title: 'Users on the 4th floor ca\'t get access to the WiFi hotspots.',
-        data: 'User complains that the new appliance is too difficult to setup. The last time he came close to the appliance it tried to bite him. Support technicial told him this was absolute nonesense but the user now refuses to go anywhere near it until the technician calls.'
-    }
+    events: [],
+    eventDetail: {}
+  }
+  // [Mount Livecycle Hook ] -----------------------
+  componentDidMount() {
+    // Load events on Mount
+    this.getEvents()
   }
 
-  // Show Form
+  // [GET EVENTS] ---------------------------------
+  // When the component mounts, fetch the data and load the first events
+  getEvents = (loadLatest) => {
+    Axios.get('https://forgetful-elephant.herokuapp.com/events')
+    .then(res => {
+      // Pull Data and assign it to variables
+      // Automatically load the first one.
+      this.setState({
+        events: res.data,
+        // Inline if-else decides if it loads first or last
+        eventDetail: loadLatest ? res.data[res.data.length - 1] : res.data[0],
+        createView: false
+      })
+    })
+    .catch(err => {
+      // handle error
+      window.alertify.error('We\'r sorry, something went wrong while loading the events.')
+      console.log(err)
+    })
+  }
+  // [SELECT EVENT] -------------------------------
+  // When user selects an item from the list, load it into the view
+  selectEvent = (desiredIndex) => {
+    this.setState({
+      eventDetail: this.state.events[desiredIndex],
+      createView: false
+    })
+  }
+  // [DELETE EVENT] -------------------------------
+  // When user hits delete, delete that event!
+  deleteEvent = (eventId) => {
+    Axios.delete('https://forgetful-elephant.herokuapp.com/events/' + eventId)
+    .then(res => {
+      // Reload events after delete
+      window.alertify.success('Event successfully deleted.')
+      this.getEvents()
+    })
+    .catch(err => {
+      // handle error
+      window.alertify.error('We\'r sorry, something went wrong while deleting that event.')
+      console.log(err)
+    })
+  }
+  // [TOGGLE FORM] --------------------------------
+  // Simple flag toggle for form UI
   toggleForm = (e) => {
     e.preventDefault();
     this.setState({createView: !this.state.createView})
   }
 
+  // [RENDER View] ----------------------------------
   render () {
     // Return View
     return (
@@ -76,7 +80,7 @@ class App extends Component {
           </div>
           {/* Quickly checks lenght of event to determine what to show */}
           {this.state.events.length > 0 ? (
-            <EventList events={this.state.events}/>
+            <EventList events={this.state.events} selectEvent={this.selectEvent}/>
           ):(
             <div className="blk-no-events">
               There are currently no events to view...
@@ -90,10 +94,10 @@ class App extends Component {
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event fired by button */}
           {!this.state.createView &&
-            <EventDetail details={this.state.eventDetail}/>
+            <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent}/>
           }
           {this.state.createView &&
-            <EventCreate toggleForm={this.toggleForm}/>
+            <EventCreate toggleForm={this.toggleForm} loadEvents={this.getEvents}/>
           }
         </div>
       </div>
