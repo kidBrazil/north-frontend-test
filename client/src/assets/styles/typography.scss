@@ -6,7 +6,8 @@
 body {
   font-family: $main-font;
   font-size: 16px;
-  color: $black;
+  color: $color-brand-primary;
+  background: $bkg-dark-grey;
 }
 
 /* Headings & Body Copy */
@@ -29,37 +30,37 @@ h6,.h6, {
 
 // Responsive Font Size Maps
 $p-font-sizes: (
-  null  : 15px,
-  $landscape : 20px,
+  null  : 16px,
+  $landscape : 18px,
 );
 
 $h1-font-sizes: (
   null  : 50px,
-  $landscape: 120px
+  $landscape: 80px
 );
 
 $h2-font-sizes: (
   null  : 40px,
-  $landscape: 80px
+  $landscape: 70px
 );
 
 $h3-font-sizes: (
   null  : 35px,
-  $landscape: 70px
+  $landscape: 60px
 );
 
 $h4-font-sizes: (
   null  : 30px,
-  $landscape: 60px
+  $landscape: 50px
 );
 
 $h5-font-sizes: (
   null  : 20px,
-  $landscape: 50px
+  $landscape: 40px
 );
 
 $h6-font-sizes: (
-  null  : 15px,
+  null  : 23px,
   $landscape: 30px
 );
 

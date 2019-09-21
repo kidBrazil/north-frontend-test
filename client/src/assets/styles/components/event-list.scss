@@ -1,0 +1,82 @@
+// Events Lists ---------------
+.blk-event-list {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  order: 2;
+  // Limit height on Tablet
+  @media #{$tablet-prt-only} {
+    max-height: 500px;
+  }
+  // Limit height on mobile
+  @media #{$phone-only} {
+    max-height: 400px;
+  }
+
+  @media #{$landscape} {
+    position: absolute;
+    top: 0;
+    padding-top: 75px;
+    padding-bottom: 100px;
+    height: 100vh;
+    order: 1;
+  }
+}
+
+// Event on List ---------------
+.blk-event {
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  transition: all .4s;
+  cursor: pointer;
+
+  // Pseudo element for gradient border
+  &:after {
+    @include pseudo();
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(226,124,19,0) 0%, rgba(226,124,19,1) 44%,
+                rgba(226,124,19,1) 50%, rgba(226,124,19,1) 55%, rgba(226,124,19,0) 100%)
+  }
+  // Hovers...
+  &:hover,
+  &:focus,
+  &:active {
+    background: $bkg-medium-grey;
+    color: $white;
+  }
+  // Title & Type container
+  span {
+    width: 100%;
+    display: block;
+  }
+  // Icon
+  i {
+    font-size: 45px;
+    margin-right: 15px;
+    width: 15%;
+  }
+  // Event Type
+  .blk-event-type {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  // Content- Needed to make the ellipsis work
+  .blk-event-content {
+    width: 85%;
+  }
+  // Event Title
+  .blk-event-title {
+    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: 300;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
