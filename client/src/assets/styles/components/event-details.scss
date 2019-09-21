@@ -1,8 +1,9 @@
-// Event Details
+// Event Details -------------------------------------
 .blk-event-details {
   width: 100%;
   padding: 20px;
 
+  // Header encompasses a few different pieces of data
   .blk-details-header {
     width: 100%;
     margin-bottom: 5px;
@@ -13,6 +14,7 @@
     color: $color-brand-primary;
   }
 
+  // Row spacing
   .blk-event-row {
     width: 100%;
     display: block;
@@ -23,7 +25,8 @@
   }
 }
 
-// Event Header
+// Event Header -------------------------------------
+// Minor modifications...
 .blk-event-header {
   width: 100%;
 
@@ -37,9 +40,29 @@
   }
 }
 
+// Data container ---------------
 .blk-event-data {
   width: 100%;
   margin-top: 30px;
   font-size: 22px;
   line-height: 1.1;
+}
+
+// No Content for Details ---------------
+.blk-no-content {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  text-align: center;
+
+  i {
+    font-size: 100px;
+    margin-bottom: 30px;
+  }
+
+  .--center {
+    @include center(both);
+  }
 }

@@ -1,4 +1,29 @@
 // Events Lists ---------------
+.blk-event-list {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  order: 2;
+  // Limit height on Tablet
+  @media #{$tablet-prt-only} {
+    max-height: 500px;
+  }
+  // Limit height on mobile
+  @media #{$phone-only} {
+    max-height: 400px;
+  }
+
+  @media #{$landscape} {
+    position: absolute;
+    top: 0;
+    padding-top: 75px;
+    padding-bottom: 100px;
+    height: 100vh;
+    order: 1;
+  }
+}
+
+// Event on List ---------------
 .blk-event {
   width: 100%;
   position: relative;
@@ -16,7 +41,7 @@
     background: linear-gradient(90deg, rgba(226,124,19,0) 0%, rgba(226,124,19,1) 44%,
                 rgba(226,124,19,1) 50%, rgba(226,124,19,1) 55%, rgba(226,124,19,0) 100%)
   }
-  // Hovers
+  // Hovers...
   &:hover,
   &:focus,
   &:active {

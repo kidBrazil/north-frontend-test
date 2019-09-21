@@ -8,7 +8,7 @@ import './assets/styles/global-main.scss';
 class App extends Component {
   state = {
     // Swap flag to view Create View
-    createView: true,
+    createView: false,
     // Temporary data model..
     events: [
       {
@@ -59,9 +59,13 @@ class App extends Component {
     }
   }
 
+  // Show Form
+  toggleForm = (e) => {
+    e.preventDefault();
+    this.setState({createView: !this.state.createView})
+  }
+
   render () {
-    // Bind state to variables
-    let createPanel = this.state.createView;
     // Return View
     return (
       <div className="flex flex-vert-stretch flex-wrap">
@@ -79,17 +83,17 @@ class App extends Component {
             </div>
           )}
           {/* Button for Creating New Event */}
-          <button className="blk-base-btn blk-primary-btn">
+          <button className="blk-base-btn blk-primary-btn" onClick={this.toggleForm}>
             Create New
           </button>
         </div>
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event fired by button */}
-          {!createPanel &&
+          {!this.state.createView &&
             <EventDetail details={this.state.eventDetail}/>
           }
-          {createPanel &&
-            <EventCreate />
+          {this.state.createView &&
+            <EventCreate toggleForm={this.toggleForm}/>
           }
         </div>
       </div>
