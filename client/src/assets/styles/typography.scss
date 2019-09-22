@@ -8,6 +8,7 @@ body {
   font-size: $base-font-size;
   color: $color-brand-primary;
   background: $bkg-dark-grey;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.1;
 }
 

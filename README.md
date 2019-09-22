@@ -42,8 +42,8 @@ $color-brand-accent: #c4ee1e;
 $color-brand-delete: #e23013;
 $color-brand-submit: #50e213;
 $bkg-dark-grey: #191919;
-$bkg-medium-grey: lighten($bkg-dark-grey, 10%);
-$bkg-light-grey: lighten($bkg-medium-grey, 10%);
+$bkg-medium-grey: lighten($bkg-dark-grey, 15%);
+$bkg-light-grey: lighten($bkg-medium-grey, 30%);
 $color-brand-bkg: lighten($bkg-dark-grey, 10%);
 $black: #000;
 $white: #fff;
@@ -59,11 +59,14 @@ $base-font-size: 16px;
 @function calc-percent($target, $container) {
   @return ($target - $container);
 }
+// Buttons
+$standard-button-padding: 15px 20px;
 // Set size of sidebar here
 $sidebar-width: 25%;
 $main-width: calc-percent(100%, $sidebar-width);
 // Radius Variables
 $standard-radius: 10px;
+
 ```
 
 -------

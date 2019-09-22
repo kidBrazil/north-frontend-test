@@ -110,7 +110,7 @@ class App extends Component {
         {/* Application Sidebar */}
         <div className="blk-events-sidebar">
           <div className="blk-panel-heading u-uppercase u-bold h6">
-            Events List
+            Events
           </div>
           {/* Quickly checks lenght of event to determine what to show */}
           {this.state.events.length > 0 ? (
