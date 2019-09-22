@@ -21,7 +21,7 @@
   }
 
   @media #{$landscape} {
-    width: 30%;
+    width: $sidebar-width;
     height: 100vh;
   }
   // When no events present...
@@ -38,13 +38,15 @@
     width: 100%;
     border-radius: 0;
     padding: 25px 0;
+    box-shadow: 0 10px 10px rgba(0,0,0,.5);
 
     @media #{$landscape} {
       position: absolute;
       order: 2;
       left: 0;
       bottom: 0;
-      border-radius: 10px 10px 0 0;
+      border-radius: $standard-radius $standard-radius 0 0;
+      box-shadow: 0 10px 10px rgba(0,0,0,0);
     }
   }
 
@@ -63,7 +65,7 @@
   background: $bkg-medium-grey;
 
   @media #{$landscape} {
-    width: 70%;
+    width: $main-width;
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
@@ -97,7 +99,7 @@
 .blk-panel {
   padding: 20px;
   border: 2px solid $color-brand-primary;
-  border-radius: 10px;
+  border-radius: $standard-radius;
 }
 
 // Scrollbar styling -------------------------

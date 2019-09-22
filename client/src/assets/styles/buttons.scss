@@ -8,7 +8,8 @@
 /-------------------------------------*/
 
 /* Base Button */
-.blk-base-btn {
+.blk-base-btn,
+.ajs-button {
   width: auto;
   padding: 10px;
   display: inline-block;
@@ -19,7 +20,7 @@
   transition: all .4s;
   position: relative;
   font-size: 22px;
-  border-radius: 10px;
+  border-radius: $standard-radius;
   vertical-align: middle;
   appareance: none;
   border: 2px solid transparent;
@@ -53,7 +54,8 @@
 }
 
 // Delete Btn
-.blk-delete-btn {
+.blk-delete-btn,
+.ajs-cancel {
   background: $color-brand-delete;
   color: $bkg-dark-grey;
 
@@ -68,7 +70,8 @@
 }
 
 // Submit BTN
-.blk-submit-btn {
+.blk-submit-btn,
+.ajs-ok {
   background: $color-brand-submit;
   color: $bkg-dark-grey;
 
