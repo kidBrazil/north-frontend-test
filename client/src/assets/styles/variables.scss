@@ -14,7 +14,6 @@ $color-brand-bkg: lighten($bkg-dark-grey, 10%);
 $black: #000;
 $white: #fff;
 
-
 // Main Font
 $main-font: 'Roboto', 'Helvetica', sans-serif;
 $heading-weight: 700;
@@ -29,12 +28,5 @@ $base-font-size: 16px;
 // Set size of sidebar here
 $sidebar-width: 25%;
 $main-width: calc-percent(100%, $sidebar-width);
-
-// Spacing Variables
-
-// Button Variables
-
 // Radius Variables
 $standard-radius: 10px;
-
-//Clipping Paths

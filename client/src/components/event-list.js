@@ -8,6 +8,38 @@ class EventList extends Component {
   render () {
     return (
       <div className="blk-event-list">
+        <div className="blk-event-filter flex flex-nowrap flex-vert-center flex-hor-between">
+          <div
+            onClick={()=>this.props.loadEvents()}
+            className="blk-event-select ">
+            <i className="fad fa-globe-americas"></i>
+            <span className="u-screenreader">Load All</span>
+          </div>
+          <div
+            onClick={()=>this.props.filter('XHR0001')}
+            className="blk-event-select ">
+            <i className="fad fa-user-headset"></i>
+            <span className="u-screenreader">Phone Support</span>
+          </div>
+          <div
+            onClick={()=>this.props.filter('XHR0002')}
+            className="blk-event-select">
+            <i className="fas fa-tools"></i>
+            <span className="u-screenreader">Machine Maintenance</span>
+          </div>
+          <div
+            onClick={()=>this.props.filter('XHR0003')}
+            className="blk-event-select">
+            <i className="fas fa-car-building"></i>
+            <span className="u-screenreader">Phone Support</span>
+          </div>
+          <div
+            onClick={()=>this.props.filter('XHR0004')}
+            className="blk-event-select">
+            <i className="fas fa-signal-slash"></i>
+            <span className="u-screenreader">Phone Support</span>
+          </div>
+        </div>
         {this.props.events.map((event, index) => {
           return (
             <div key={index}
