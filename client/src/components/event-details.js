@@ -68,8 +68,11 @@ class EventDetail extends Component {
           <div className="--center">
             <i className="fad fa-inbox-in"></i>
             <div className="h6 u-bold">
-              There are currently no events loaded.
+              There are currently no events to view.
             </div>
+            <p>
+              You can create new events by clicking on Create Event on the left sidebar.
+            </p>
           </div>
         </div>
       );
