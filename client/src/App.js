@@ -52,17 +52,21 @@ class App extends Component {
   // [DELETE EVENT] -------------------------------
   // When user hits delete, delete that event!
   deleteEvent = (eventId) => {
-    Axios.delete('https://forgetful-elephant.herokuapp.com/events/' + eventId)
-    .then(res => {
-      // Reload events after delete
-      window.alertify.success('Event successfully deleted.')
-      this.getEvents()
-    })
-    .catch(err => {
-      // handle error
-      window.alertify.error('We\'r sorry, something went wrong while deleting that event.')
-      console.log(err)
-    })
+    window.alertify.confirm('Delete Event?', 'Are you sure you want to permanently delete this event?',
+      () => {
+        Axios.delete('https://forgetful-elephant.herokuapp.com/events/' + eventId)
+        .then(res => {
+          // Reload events after delete
+          window.alertify.success('Event successfully deleted.')
+          this.getEvents()
+        })
+        .catch(err => {
+          // handle error
+          window.alertify.error('We\'r sorry, something went wrong while deleting that event.')
+          console.log(err)
+        })
+      },
+      () => { window.alertify.warning('Canceled Deletion of event.')});
   }
   // [TOGGLE FORM] --------------------------------
   // Simple flag toggle for form UI
