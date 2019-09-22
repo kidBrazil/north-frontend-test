@@ -119,8 +119,9 @@ class App extends Component {
               selectEvent={this.selectEvent}
               filter={this.filterEvents}/>
           ):(
-            <div className="blk-no-events">
-              There are currently no events to view...
+            <div className="blk-no-events u-light">
+              <i class="fad fa-folder-open"></i>
+              There are currently no events.
             </div>
           )}
           {/* Button for Creating New Event */}
