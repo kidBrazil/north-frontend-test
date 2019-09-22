@@ -9,6 +9,7 @@ class App extends Component {
   state = {
     // Swap flag to view Create View
     createView: false,
+    eventLoaded: false,
     events: [],
     eventDetail: {}
   }
@@ -23,12 +24,14 @@ class App extends Component {
   getEvents = (loadLatest) => {
     Axios.get('https://forgetful-elephant.herokuapp.com/events')
     .then(res => {
+      console.log((res.data.length > 0));
       // Pull Data and assign it to variables
       // Automatically load the first one.
       this.setState({
         events: res.data,
         // Inline if-else decides if it loads first or last
         eventDetail: loadLatest ? res.data[res.data.length - 1] : res.data[0],
+        eventLoaded: (res.data.length > 0) ? true : false,
         createView: false
       })
     })
@@ -100,7 +103,7 @@ class App extends Component {
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event fired by button */}
           {!this.state.createView &&
-            <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent}/>
+            <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent} showEvent={this.eventLoaded}/>
           }
           {this.state.createView &&
             <EventCreate toggleForm={this.toggleForm} loadEvents={this.getEvents}/>

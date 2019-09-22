@@ -149,6 +149,13 @@ a {
   font-weight: 700;
 }
 
+// Alertify Overrides -----------------------
 .alertify-notifier {
   color: $black;
+
+  .ajs-message {
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.4);
+    font-weight: 700;
+  }
 }

@@ -62,6 +62,10 @@ select:focus {
   color: $color-brand-primary;
 }
 
+.blk-error {
+  border: 2px solid $color-brand-delete;
+}
+
 
 /* stylelint-enable */
 
