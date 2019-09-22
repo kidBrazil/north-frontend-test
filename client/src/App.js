@@ -11,7 +11,6 @@ class App extends Component {
     createView: false,
     eventLoaded: false,
     events: [],
-    filter: false,
     eventDetail: {}
   }
   // [Mount Livecycle Hook ] -----------------------
