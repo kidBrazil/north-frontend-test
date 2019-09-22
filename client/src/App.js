@@ -18,7 +18,28 @@ class App extends Component {
     // Load events on Mount
     this.getEvents()
   }
-
+  // [Filter Events] ------------------------------
+  // Fetches only the events from the DB that match the serviceId
+  filterEvents = (serviceId) => {
+    Axios.get('https://forgetful-elephant.herokuapp.com/events')
+    .then(res => {
+      console.log((res.data.length > 0));
+      // Filter results before update
+      let filteredEvents = res.data.filter(item => item.serviceId === serviceId )
+      this.setState({
+        events: filteredEvents,
+        // Inline if-else decides if it loads first or last
+        eventDetail: filteredEvents[0],
+        eventLoaded: (res.data.length > 0) ? true : false,
+        createView: false
+      })
+    })
+    .catch(err => {
+      // handle error
+      window.alertify.error('We\'r sorry, something went wrong while loading the events.')
+      console.log(err)
+    })
+  }
   // [GET EVENTS] ---------------------------------
   // When the component mounts, fetch the data and load the first events
   getEvents = (loadLatest) => {
@@ -80,7 +101,6 @@ class App extends Component {
       window.scrollTo(0, document.body.scrollHeight);
     }
   }
-
   // [RENDER View] ----------------------------------
   render () {
     // Return View
@@ -89,11 +109,15 @@ class App extends Component {
         {/* Application Sidebar */}
         <div className="blk-events-sidebar">
           <div className="blk-panel-heading u-uppercase u-bold h6">
-            Events List
+            Events
           </div>
           {/* Quickly checks lenght of event to determine what to show */}
           {this.state.events.length > 0 ? (
-            <EventList events={this.state.events} selectEvent={this.selectEvent}/>
+            <EventList
+              events={this.state.events}
+              loadEvents={this.getEvents}
+              selectEvent={this.selectEvent}
+              filter={this.filterEvents}/>
           ):(
             <div className="blk-no-events">
               There are currently no events to view...
@@ -102,12 +126,16 @@ class App extends Component {
           {/* Button for Creating New Event */}
           <button className="blk-base-btn blk-primary-btn" onClick={this.toggleForm}>
             Create New
+            <i class="fad fa-file-plus"></i>
           </button>
         </div>
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event fired by button */}
           {!this.state.createView &&
-            <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent} showEvent={this.eventLoaded}/>
+            <EventDetail
+              details={this.state.eventDetail}
+              deleteEvent={this.deleteEvent}
+              showEvent={this.eventLoaded}/>
           }
           {this.state.createView &&
             <EventCreate toggleForm={this.toggleForm} loadEvents={this.getEvents}/>

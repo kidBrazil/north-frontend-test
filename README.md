@@ -25,12 +25,59 @@ npm run start
 npm run build
 ```
 
+### Populating DB
+It is highly recommended that you use the Create Event form to populate the Database. Otherwise you will run into errors because the schema might not match.
+
+### Theming
+There are a few variables that can be changed on the `src/assets/styles/variables.scss` file that will change the whole look of the application. You can change the size of the sidebar, the main color of the application and the base font-size. This could easily be turned into JS functions.
+
+```scss
+/*-------------------------------------
+ * VARIABLES - PROJECT WIDE
+/-------------------------------------*/
+
+// Main colors
+$color-brand-primary: #e27c13;
+$color-brand-accent: #c4ee1e;
+$color-brand-delete: #e23013;
+$color-brand-submit: #50e213;
+$bkg-dark-grey: #191919;
+$bkg-medium-grey: lighten($bkg-dark-grey, 15%);
+$bkg-light-grey: lighten($bkg-medium-grey, 30%);
+$color-brand-bkg: lighten($bkg-dark-grey, 10%);
+$black: #000;
+$white: #fff;
+
+// Main Font
+$main-font: 'Roboto', 'Helvetica', sans-serif;
+$heading-weight: 700;
+$subheading-weight: 500;
+$body-weight: 300;
+$base-font-size: 16px;
+
+// Sizing Variables
+@function calc-percent($target, $container) {
+  @return ($target - $container);
+}
+// Buttons
+$standard-button-padding: 15px 20px;
+// Set size of sidebar here
+$sidebar-width: 25%;
+$main-width: calc-percent(100%, $sidebar-width);
+// Radius Variables
+$standard-radius: 10px;
+
+```
+
 -------
 
 ## [Project Assumptions]
 My interpretation of the project is that we were dealing with a UI for a ficticious service company that provides a variety of support services for businesses and offices. I would imagine you would call or email these guys and ask for help with networking, complain about problems in the office building or ask for technical assistance over the phone.
 
 Based on that interpretation I assumed that the UI would serve as the central control point for the service company. Dispatchers and technicians would be able to go to this UI and see any service requests (events) that are available in the system. They could then view details on that request, delete it once completed or create new ones.
+
+## [DATA STRUCTURES]
+The application expects a few specific types of data for fields such as Icon and ServiceId. These are in turn used to return the right graphics and the correct filtering results. Because of this it is recommended that you use the Create Event form to populate the Database for testing.
 
 ## [PROJECT NOTES]
 

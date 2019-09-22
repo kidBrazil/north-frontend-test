@@ -167,3 +167,16 @@
 .u-pointer {
   cursor: pointer;
 }
+
+.u-gradient {
+  // Pseudo element for gradient border
+  &:after {
+    @include pseudo();
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(226,124,19,0) 0%, rgba(226,124,19,1) 44%,
+                rgba(226,124,19,1) 50%, rgba(226,124,19,1) 55%, rgba(226,124,19,0) 100%)
+  }
+}

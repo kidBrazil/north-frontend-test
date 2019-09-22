@@ -9,8 +9,13 @@ class EventDetail extends Component {
     if ( this.props.details ) {
       return (
         <div>
-          <div className="blk-panel-heading u-uppercase u-bold h6">
-            Event Details
+          <div className="blk-panel-heading u-uppercase u-bold h6 flex flex-hor-between flex-vert-center">
+            Event Information
+            <button aria-label="Delete Event"
+              onClick={()=>this.props.deleteEvent(this.props.details.id)}
+              className="blk-base-btn blk-delete-btn">
+              Delete Event
+            </button>
           </div>
           <div className="blk-event-details">
             <div className="blk-event-header blk-panel flex flex-vert-center flex-hor-between flex-wrap">
@@ -50,6 +55,7 @@ class EventDetail extends Component {
               onClick={()=>this.props.deleteEvent(this.props.details.id)}
               className="blk-base-btn blk-delete-btn">
               Delete Event
+              <i class="fad fa-trash-alt"></i>
             </button>
           </div>
         </div>

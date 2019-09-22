@@ -5,9 +5,11 @@
 /* Main */
 body {
   font-family: $main-font;
-  font-size: 16px;
+  font-size: $base-font-size;
   color: $color-brand-primary;
   background: $bkg-dark-grey;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.1;
 }
 
 /* Headings & Body Copy */
@@ -30,44 +32,44 @@ h6,.h6, {
 
 // Responsive Font Size Maps
 $p-font-sizes: (
-  null  : 16px,
-  $landscape : 18px,
+  null  : $base-font-size,
+  $landscape : ($base-font-size * 1.15),
 );
 
 $h1-font-sizes: (
-  null  : 50px,
-  $landscape: 80px
+  null  : ($base-font-size * 3.2),
+  $landscape: ($base-font-size * 5)
 );
 
 $h2-font-sizes: (
-  null  : 40px,
-  $landscape: 70px
+  null  : ($base-font-size * 2.5),
+  $landscape: ($base-font-size * 4.4)
 );
 
 $h3-font-sizes: (
-  null  : 35px,
-  $landscape: 60px
+  null  : ($base-font-size * 2.2),
+  $landscape: ($base-font-size * 3.75)
 );
 
 $h4-font-sizes: (
-  null  : 30px,
-  $landscape: 50px
+  null  : ($base-font-size * 1.875),
+  $landscape: ($base-font-size * 3.12)
 );
 
 $h5-font-sizes: (
-  null  : 20px,
-  $landscape: 40px
+  null  : ($base-font-size * 1.25),
+  $landscape: ($base-font-size * 2.5)
 );
 
 $h6-font-sizes: (
-  null  : 23px,
-  $landscape: 30px
+  null  : ($base-font-size * 1.375),
+  $landscape: ($base-font-size * 1.875)
 );
 
 // Links
 $link-font-sizes: (
-  null  : 15px,
-  $landscape: 25px
+  null  : $base-font-size,
+  $landscape: ($base-font-size * 1.56)
 );
 
 // Responsive Font-Size Mixing (Function Only)

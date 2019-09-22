@@ -11,7 +11,7 @@
 .blk-base-btn,
 .ajs-button {
   width: auto;
-  padding: 10px;
+  padding: $standard-button-padding;
   display: inline-block;
   text-transform: uppercase;
   font-weight: 700;
@@ -25,18 +25,10 @@
   appareance: none;
   border: 2px solid transparent;
   margin-top: 30px;
+  margin-right: 20px;
 
-  @media #{$portrait} {
-    padding: 15px 20px;
-  }
-
-  @media #{$tablet-lnd-only} {
-    padding: 10px 15px;
-  }
-
-  @media #{$phone-only} {
-    padding: 8px 10px;
-    letter-spacing: 1px;
+  i {
+    margin-left: 10px;
   }
 }
 
@@ -81,5 +73,19 @@
     color: $color-brand-submit;
     background: transparent;
     border: 2px solid $color-brand-submit;
+  }
+}
+
+//Cancel Btn
+.blk-cancel-btn{
+  background: $bkg-light-grey;
+  color: $bkg-dark-grey;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $bkg-light-grey;
+    background: transparent;
+    border: 2px solid $bkg-light-grey;
   }
 }
