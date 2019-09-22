@@ -32,7 +32,7 @@
     text-align: center;
   }
 
-  // Button Positioning
+  // Button Positioning & Other overrides
   .blk-base-btn {
     order: 1;
     width: 100%;
@@ -40,6 +40,18 @@
     padding: 25px 0;
     box-shadow: 0 10px 10px rgba(0,0,0,.5);
     margin-top: 0;
+    border-bottom: none;
+    // Remove border from hover to stop bounce
+    &:hover {
+      border-bottom: none;
+    }
+    // Override tendency to stay transparent
+    &:focus,
+    &:active {
+      background: $color-brand-primary;
+      color: $bkg-dark-grey;
+      border-bottom: none;
+    }
 
     @media #{$landscape} {
       position: absolute;
@@ -48,6 +60,7 @@
       bottom: 0;
       border-radius: $standard-radius $standard-radius 0 0;
       box-shadow: 0 10px 10px rgba(0,0,0,0);
+      z-index: 3;
     }
   }
 

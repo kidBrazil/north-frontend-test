@@ -195,12 +195,14 @@ class EventCreate extends Component {
                 aria-label="Service Type" required/>
             </div>
           </div>
-          <div className="flex flex-hor-between flex-vert-center">
+          <div className="flex flex-hor-start flex-vert-center">
             <button className="blk-base-btn blk-submit-btn" onClick={this.submitForm}>
-              Submit Event
+              Create Event
+              <i class="fad fa-file-plus"></i>
             </button>
-            <button className="blk-base-btn blk-delete-btn" onClick={this.props.toggleForm}>
+            <button className="blk-base-btn blk-cancel-btn" onClick={this.props.toggleForm}>
               Cancel
+              <i class="fad fa-undo-alt"></i>
             </button>
           </div>
         </div>

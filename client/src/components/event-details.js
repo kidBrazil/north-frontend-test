@@ -50,6 +50,7 @@ class EventDetail extends Component {
               onClick={()=>this.props.deleteEvent(this.props.details.id)}
               className="blk-base-btn blk-delete-btn">
               Delete Event
+              <i class="fad fa-trash-alt"></i>
             </button>
           </div>
         </div>

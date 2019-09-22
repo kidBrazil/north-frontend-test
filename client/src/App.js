@@ -102,7 +102,6 @@ class App extends Component {
       window.scrollTo(0, document.body.scrollHeight);
     }
   }
-
   // [RENDER View] ----------------------------------
   render () {
     // Return View
@@ -128,6 +127,7 @@ class App extends Component {
           {/* Button for Creating New Event */}
           <button className="blk-base-btn blk-primary-btn" onClick={this.toggleForm}>
             Create New
+            <i class="fad fa-file-plus"></i>
           </button>
         </div>
         <div className="blk-events-content">
