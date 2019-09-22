@@ -10,7 +10,7 @@
     display: block;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: ($base-font-size * 1.125);
     color: $color-brand-primary;
   }
 
@@ -22,6 +22,7 @@
     font-size: 25px;
     font-weight: 300;
     color: $white;
+    font-size: ($base-font-size * 1.2);
   }
 }
 
@@ -54,8 +55,7 @@
 .blk-event-data {
   width: 100%;
   margin-top: 30px;
-  font-size: 22px;
-  line-height: 1.1;
+  font-size: ($base-font-size * 1.2);
 }
 
 // No Content for Details ---------------

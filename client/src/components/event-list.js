@@ -15,7 +15,7 @@ class EventList extends Component {
   render () {
     return (
       <div className="blk-event-container">
-        <div className="blk-event-filter flex flex-nowrap flex-vert-center flex-hor-between">
+        <div className="blk-event-filter u-gradient flex flex-nowrap flex-vert-center flex-hor-between">
           <div
             onClick={()=>this.props.loadEvents()}
             className="blk-event-select ">
@@ -52,7 +52,7 @@ class EventList extends Component {
           return (
             <div key={index}
               onClick={()=>this.props.selectEvent(index)}
-              className="blk-event flex flex-hor-between flex-vert-center flex-hor-start">
+              className="blk-event u-gradient flex flex-hor-between flex-vert-center flex-hor-start">
               <i className={event.icon}></i>
               <div className="blk-event-content">
                 <span className="blk-event-type">

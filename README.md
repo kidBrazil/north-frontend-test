@@ -28,6 +28,44 @@ npm run build
 ### Populating DB
 It is highly recommended that you use the Create Event form to populate the Database. Otherwise you will run into errors because the schema might not match.
 
+### Theming
+There are a few variables that can be changed on the `src/assets/styles/variables.scss` file that will change the whole look of the application. You can change the size of the sidebar, the main color of the application and the base font-size. This could easily be turned into JS functions.
+
+```scss
+/*-------------------------------------
+ * VARIABLES - PROJECT WIDE
+/-------------------------------------*/
+
+// Main colors
+$color-brand-primary: #e27c13;
+$color-brand-accent: #c4ee1e;
+$color-brand-delete: #e23013;
+$color-brand-submit: #50e213;
+$bkg-dark-grey: #191919;
+$bkg-medium-grey: lighten($bkg-dark-grey, 10%);
+$bkg-light-grey: lighten($bkg-medium-grey, 10%);
+$color-brand-bkg: lighten($bkg-dark-grey, 10%);
+$black: #000;
+$white: #fff;
+
+// Main Font
+$main-font: 'Roboto', 'Helvetica', sans-serif;
+$heading-weight: 700;
+$subheading-weight: 500;
+$body-weight: 300;
+$base-font-size: 16px;
+
+// Sizing Variables
+@function calc-percent($target, $container) {
+  @return ($target - $container);
+}
+// Set size of sidebar here
+$sidebar-width: 25%;
+$main-width: calc-percent(100%, $sidebar-width);
+// Radius Variables
+$standard-radius: 10px;
+```
+
 -------
 
 ## [Project Assumptions]
