@@ -20,14 +20,13 @@ class App extends Component {
     this.getEvents()
   }
   // [Filter Events] ------------------------------
+  // Fetches only the events from the DB that match the serviceId
   filterEvents = (serviceId) => {
     Axios.get('https://forgetful-elephant.herokuapp.com/events')
     .then(res => {
       console.log((res.data.length > 0));
-      // Pull Data and assign it to variables
-      // Automatically load the first one.
       // Filter results before update
-      let filteredEvents = res.data.filter(item => item.serviceId == serviceId )
+      let filteredEvents = res.data.filter(item => item.serviceId === serviceId )
       this.setState({
         events: filteredEvents,
         // Inline if-else decides if it loads first or last
@@ -116,7 +115,11 @@ class App extends Component {
           </div>
           {/* Quickly checks lenght of event to determine what to show */}
           {this.state.events.length > 0 ? (
-            <EventList events={this.state.events} loadEvents={this.getEvents} selectEvent={this.selectEvent} filter={this.filterEvents}/>
+            <EventList
+              events={this.state.events}
+              loadEvents={this.getEvents}
+              selectEvent={this.selectEvent}
+              filter={this.filterEvents}/>
           ):(
             <div className="blk-no-events">
               There are currently no events to view...
@@ -130,7 +133,10 @@ class App extends Component {
         <div className="blk-events-content">
           {/* Conditional view switch between create and view event fired by button */}
           {!this.state.createView &&
-            <EventDetail details={this.state.eventDetail} deleteEvent={this.deleteEvent} showEvent={this.eventLoaded}/>
+            <EventDetail
+              details={this.state.eventDetail}
+              deleteEvent={this.deleteEvent}
+              showEvent={this.eventLoaded}/>
           }
           {this.state.createView &&
             <EventCreate toggleForm={this.toggleForm} loadEvents={this.getEvents}/>

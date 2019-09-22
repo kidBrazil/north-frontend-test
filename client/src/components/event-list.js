@@ -4,10 +4,17 @@ import PropTypes from 'prop-types';
 // The event list component takes in an array of objects from the API and displays
 // them in a simple list. Each component will correspond to an ID and when clicked
 // should render the details of that entry into the main content area.
+
+// NOTES:
+// It would have been better to have the filtering be dynamically generated as well.
+// Because we are dealing with a fake application without a truly set schema it is easier
+// to do it by hand.
+// In an ideal world we would query the DB for the types of categories available for filtering
+
 class EventList extends Component {
   render () {
     return (
-      <div className="blk-event-list">
+      <div className="blk-event-container">
         <div className="blk-event-filter flex flex-nowrap flex-vert-center flex-hor-between">
           <div
             onClick={()=>this.props.loadEvents()}
@@ -40,6 +47,7 @@ class EventList extends Component {
             <span className="u-screenreader">Phone Support</span>
           </div>
         </div>
+        <div className="blk-event-list">
         {this.props.events.map((event, index) => {
           return (
             <div key={index}
@@ -57,6 +65,7 @@ class EventList extends Component {
             </div>
           );
         })}
+        </div>
       </div>
     );
   }

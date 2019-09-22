@@ -25,12 +25,18 @@ npm run start
 npm run build
 ```
 
+### Populating DB
+It is highly recommended that you use the Create Event form to populate the Database. Otherwise you will run into errors because the schema might not match.
+
 -------
 
 ## [Project Assumptions]
 My interpretation of the project is that we were dealing with a UI for a ficticious service company that provides a variety of support services for businesses and offices. I would imagine you would call or email these guys and ask for help with networking, complain about problems in the office building or ask for technical assistance over the phone.
 
 Based on that interpretation I assumed that the UI would serve as the central control point for the service company. Dispatchers and technicians would be able to go to this UI and see any service requests (events) that are available in the system. They could then view details on that request, delete it once completed or create new ones.
+
+## [DATA STRUCTURES]
+The application expects a few specific types of data for fields such as Icon and ServiceId. These are in turn used to return the right graphics and the correct filtering results. Because of this it is recommended that you use the Create Event form to populate the Database for testing.
 
 ## [PROJECT NOTES]
 
