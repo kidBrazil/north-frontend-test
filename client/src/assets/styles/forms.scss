@@ -23,7 +23,7 @@ input {
     background: transparent;
     outline: 0;
     border: 2px solid $color-brand-primary;
-    border-radius: 10px;
+    border-radius: $standard-radius;
     padding: 10px;
     color: $white;
 
@@ -43,7 +43,7 @@ select {
   background: transparent;
   outline: 0;
   border: 2px solid $color-brand-primary;
-  border-radius: 10px;
+  border-radius: $standard-radius;
   padding: 10px;
   color: $white;
 

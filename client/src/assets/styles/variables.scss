@@ -20,14 +20,21 @@ $main-font: 'Roboto', 'Helvetica', sans-serif;
 $heading-weight: 700;
 $subheading-weight: 500;
 $body-weight: 300;
+$base-font-size: 16px;
 
 // Sizing Variables
+@function calc-percent($target, $container) {
+  @return ($target - $container);
+}
+// Set size of sidebar here
+$sidebar-width: 25%;
+$main-width: calc-percent(100%, $sidebar-width);
 
 // Spacing Variables
 
 // Button Variables
 
 // Radius Variables
-$standard-radius: 4px;
+$standard-radius: 10px;
 
 //Clipping Paths
